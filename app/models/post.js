@@ -7,4 +7,4 @@ const {
 
 export default Model.extend({
   title: attr('string'),
-})
+});

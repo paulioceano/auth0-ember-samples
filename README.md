@@ -21,7 +21,9 @@ This file has two values, `AUTH0_AUDIENCE` and `AUTH0_DOMAIN`. The value for `AU
 The ember development server that comes with ember addon can be used to serve the application.
 
 ```bash
-npm start
+npm install or yarn install
+bower install
+ember serve 
 ```
 
 The application will be served at `http://localhost:4200`.
