@@ -1,11 +1,28 @@
+import Ember from 'ember';
 import DS from 'ember-data';
-import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
 const {
   JSONAPIAdapter,
 } = DS;
 
-export default JSONAPIAdapter.extend(DataAdapterMixin, {
+const {
+  inject: {
+    service,
+  },
+  get,
+} = Ember;
+
+export default JSONAPIAdapter.extend({
+  auth: service(),
   namespace: 'api',
-  authorizer: 'authorizer:jwt',
+  headersForRequest() {
+    const headers = this._super(...arguments);
+    const {
+      id_token
+    } = get(this, 'auth').getSession();
+
+    return Object.assign(headers, {
+      'Authorization': `Bearer ${id_token}`
+    });
+  }
 });

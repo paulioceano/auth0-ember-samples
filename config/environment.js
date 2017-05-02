@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'auth0-ember-samples',
     environment: environment,
@@ -9,7 +9,8 @@ module.exports = function(environment) {
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
+        // e.g. 'w ith-controller': true
+        'ds-improved-ajax': true,
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
@@ -46,16 +47,11 @@ module.exports = function(environment) {
 
   }
 
-  ENV['ember-simple-auth'] = {
-    authenticationRoute: 'login',
-    routeAfterAuthentication: 'protected',
-    routeIfAlreadyAuthenticated: 'protected',
-    auth0: {
-      clientID: '7CAwfka4fAh6YCLdtz8MZ5yAq5gQ1k7t',
-      domain: 'ember-demo.auth0.com',
-      logoutReturnToURL: 'http://localhost:4200/login',
-    }
-  };
+  ENV.auth0 = {
+    clientId: '7CAwfka4fAh6YCLdtz8MZ5yAq5gQ1k7t',
+    domain: 'ember-demo.auth0.com',
+    callbackUrl: 'http://localhost:4200',
+  }
 
   return ENV;
 };

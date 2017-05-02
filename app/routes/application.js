@@ -1,8 +1,18 @@
 import Ember from 'ember';
-import ApplicationRouteMixin from 'ember-simple-auth-auth0/mixins/application-route-mixin';
 
 const {
-  Route
+  Route,
+  inject: {
+    service,
+  },
+  get,
 } = Ember;
 
-export default Route.extend(ApplicationRouteMixin, {});
+export default Route.extend({
+  auth: service(),
+  beforeModel() {
+      return get(this, 'auth')
+        .handleAuthentication()
+        // .then((success) =>  this.transitionTo('protected')));
+  },
+});
