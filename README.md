@@ -1,43 +1,6 @@
-# Auth0 Ember Calling an API
+# Auth0 Ember Samples
 
-This sample demonstrates how to make secure calls to an API after authenticating a user with Auth0. The calls to the API are made with the user's `access_token`. 
-
-## Getting Started
-
-If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. Which will be `http://localhost:4200`.
-
-You must ensure that the APIs section is enabled in your Auth0 dashboard. To do so, go to the [Advanced Settings](https://manage.auth0.com/#/account/advanced) area and verify that **Enable APIs Section** is switched on. Next, navigate to APIs in the sidebar and create a new API. The identifier for your API will be required later.
-
-## Set the Client ID and Domain in the `.env` file
-
-A `.env.example` file is provided at the root of the application. This file provides your application's credentials to the small Node server located in `index.js`.
-
-Rename `.env.example` to `.env` with your credentials filled in.
-
-This file has two values, `AUTH0_AUDIENCE` and `AUTH0_DOMAIN`. The value for `AUTH0_AUDIENCE` is the identifier used for an API that you create in the Auth0 dashboard.
-
-## Run the Application
-
-The ember development server that comes with ember addon can be used to serve the application.
-
-```bash
-npm install or yarn install
-bower install
-ember serve 
-```
-
-The application will be served at `http://localhost:4200`.
-
-## Ember Adapter
-
-See [adapter](./adapter/application.js) for an example
-
-## Ember Application Route
-
-See [route](./app/routes/application.js) for an example
-
-## Ember Data
-See [route](./app/routes/protected.js) for an example
+These samples demonstrate how to add authentication to an Ember application with Auth0.
 
 ## What is Auth0?
 

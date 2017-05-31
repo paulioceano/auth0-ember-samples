@@ -1,4 +1,5 @@
 /* jshint node: true */
+const AUTH_CONFIG = require('./auth0-variables');
 
 module.exports = function (environment) {
   var ENV = {
@@ -48,9 +49,10 @@ module.exports = function (environment) {
   }
 
   ENV.auth0 = {
-    clientId: '7CAwfka4fAh6YCLdtz8MZ5yAq5gQ1k7t',
-    domain: 'ember-demo.auth0.com',
-    callbackUrl: 'http://localhost:4200',
+    clientId: AUTH_CONFIG.clientId,
+    domain: AUTH_CONFIG.domain,
+    callbackUrl: AUTH_CONFIG.callbackUrl,
+    audience: AUTH_CONFIG.apiUrl
   }
 
   return ENV;

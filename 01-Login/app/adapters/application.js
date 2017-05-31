@@ -18,11 +18,11 @@ export default JSONAPIAdapter.extend({
   headersForRequest() {
     const headers = this._super(...arguments);
     const {
-      id_token
+      access_token
     } = get(this, 'auth').getSession();
 
     return Object.assign(headers, {
-      'Authorization': `Bearer ${id_token}`
+      'Authorization': `Bearer ${access_token}`
     });
   }
 });

@@ -18,7 +18,7 @@ module.exports = function(app) {
     },
   };
 
-  router.get('/', function(req, res) {
+  router.get('/posts', function(req, res) {
     res.send({
       data: [post]
     });
@@ -39,5 +39,5 @@ module.exports = function(app) {
     algorithms: ['RS256'],
   });
 
-  app.use('/api/posts', jwtMiddleware, router);
+  app.use('/api', jwtMiddleware, router);
 };

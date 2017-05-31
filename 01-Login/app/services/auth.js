@@ -17,7 +17,7 @@ export default Service.extend({
       domain: AUTH_CONFIG.domain,
       clientID: AUTH_CONFIG.clientId,
       redirectUri: AUTH_CONFIG.callbackUrl,
-      audience: `https://${AUTH_CONFIG.domain}/userinfo`,
+      audience: AUTH_CONFIG.audience,
       responseType: 'token id_token',
       oidcConformant: true,
     });

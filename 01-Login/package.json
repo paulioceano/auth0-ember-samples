@@ -1,7 +1,7 @@
 {
   "name": "auth0-ember-samples",
   "version": "0.0.0",
-  "description": "Small description for auth0-ember-samples goes here",
+  "description": "Log in and call an API in an Ember app with Auth0",
   "license": "MIT",
   "author": "",
   "directories": {
@@ -15,7 +15,7 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "auth0-js": "^8.6.0",
+    "auth0-js": "^8.7.0",
     "broccoli-asset-rev": "^2.4.5",
     "dotenv": "^4.0.0",
     "ember-ajax": "^3.0.0",
