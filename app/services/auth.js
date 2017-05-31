@@ -18,7 +18,8 @@ export default Service.extend({
       clientID: AUTH_CONFIG.clientId,
       redirectUri: AUTH_CONFIG.callbackUrl,
       audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-      responseType: 'token id_token'
+      responseType: 'token id_token',
+      oidcConformant: true,
     });
   }),
 
@@ -32,7 +33,6 @@ export default Service.extend({
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setSession(authResult);
         } else if (err) {
-          alert(`Error: ${err.error}`);
           return reject(err);
         }
 
@@ -40,9 +40,9 @@ export default Service.extend({
       });
     });
   },
-  isAuthenticated() {
-    return isPresent(this.getSession().access_token);
-  },
+  isAuthenticated: computed(function() {
+    return isPresent(this.getSession().access_token) && this.isNotExpired();
+  }).volatile(),
   getSession() {
     return {
       access_token: localStorage.getItem('access_token'),
@@ -68,10 +68,10 @@ export default Service.extend({
     localStorage.removeItem('expires_at');
   },
 
-  isAuthenticated() {
+  isNotExpired() {
     // Check whether the current time is past the
     // access token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    let expiresAt = this.getSession().expires_at;
     return new Date().getTime() < expiresAt;
   }
 });

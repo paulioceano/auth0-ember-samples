@@ -12,8 +12,8 @@ const {
 export default Route.extend({
   auth: service(),
   beforeModel() {
-    if (!get(this, 'auth').isAuthenticated()) {
-      return this.transitionTo('login');
+    if (!get(this, 'auth.isAuthenticated')) {
+      return this.replaceWith('application');
     }
   },
   model() {

@@ -11,8 +11,16 @@ const {
 export default Route.extend({
   auth: service(),
   beforeModel() {
-      return get(this, 'auth')
-        .handleAuthentication()
-        // .then((success) =>  this.transitionTo('protected')));
+    if (get(this, 'auth.isAuthenticated')) {
+      return;
+    }
+
+    return get(this, 'auth')
+      .handleAuthentication()
+      .then(() => {
+        if (get(this, 'auth.isAuthenticated')) {
+          this.transitionTo('protected')
+        }
+      });
   },
 });

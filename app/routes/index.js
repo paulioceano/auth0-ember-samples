@@ -1,7 +1,18 @@
 import Ember from 'ember';
 
 const {
-  Route
+  Route,
+  inject: {
+    service,
+  },
+  get,
 } = Ember;
 
-export default Route.extend({});
+export default Route.extend({
+  auth: service(),
+  beforeModel() {
+    if (get(this, 'auth.isAuthenticated')) {
+      this.transitionTo('protected');
+    }
+  },
+});

@@ -1,12 +1,10 @@
 import Ember from 'ember';
-import moment from 'moment';
 
 const {
   Controller,
   inject: {
     service,
   },
-  computed,
   computed: {
     alias,
   },
