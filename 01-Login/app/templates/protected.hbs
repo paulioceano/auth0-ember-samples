@@ -11,13 +11,12 @@
   {{!--Token expires {{moment-calendar expiresIn}} {{moment-from-now expiresIn}}--}}
 </div>
 <a href="#" {{action "logout"}}>
-    Logout of Ember Simple Auth
+    Log Out
 </a>
 <br/>
-<h2>Example of protected route that requires the user to be authenticated.</h2>
-<h3>Secret code is 12345</h3>
+<h2>This is a protected route. You can only reach it if you are authenticated.</h2>
 <br/>
-<h2>Here are some protected posts</h2>
+<h2>Posts from a protected API endpoint:</h2>
 
 {{#each posts as |post|}}
   {{post.title}}
