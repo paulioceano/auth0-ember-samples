@@ -17,4 +17,4 @@ npm-debug.log*
 testem.log
 !/.env.example
 .env
-.auth0-variables.js
+auth0-variables.js
