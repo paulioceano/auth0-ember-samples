@@ -13,6 +13,7 @@ const {
 
 export default Controller.extend({
   auth: service(),
+  messages: alias('model'),
   actions: {
     logout() {
       get(this, 'auth').logout();

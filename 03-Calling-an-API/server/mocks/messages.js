@@ -1,7 +1,8 @@
 /*jshint node:true*/
 const express = require('express');
 const router = express.Router();
-const expressJWT = require('express-jwt');
+const jwt = require('express-jwt');
+const jwtAuthz = require('express-jwt-authz');
 const jwksRsa = require('jwks-rsa');
 require('dotenv').config();
 
@@ -10,24 +11,26 @@ if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
 }
 
 module.exports = function(app) {
-  const post = {
+  const message = {
     id: 1,
-    type: 'posts',
+    type: 'message',
     attributes: {
-      title: 'I am a protected post',
+      body: 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.',
     },
   };
 
-  router.get('/posts', function(req, res) {
+  router.get('/messages', function(req, res) {
     res.send({
-      data: [post]
+      data: [message]
     });
   });
 
   const audience = process.env.AUTH0_AUDIENCE;
   const domain = process.env.AUTH0_DOMAIN;
 
-  const jwtMiddleware = expressJWT({
+  const checkScopes = jwtAuthz([ 'read:messages' ]);
+
+  const checkJwt = jwt({
     issuer: `https://${domain}/`,
     audience,
     secret: jwksRsa.expressJwtSecret({
@@ -39,5 +42,5 @@ module.exports = function(app) {
     algorithms: ['RS256'],
   });
 
-  app.use('/api', jwtMiddleware, router);
+  app.use('/api', checkJwt, checkScopes, router);
 };

@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 const {
   Route,
+  Logger,
   inject: {
     service,
   },
@@ -14,5 +15,10 @@ export default Route.extend({
     if (!get(this, 'auth.isAuthenticated')) {
       return this.replaceWith('application');
     }
+  },
+  model() {
+    return this.store.findAll('message').catch((err) => {
+      Logger.error(err);
+    });
   }
 });

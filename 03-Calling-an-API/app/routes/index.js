@@ -11,8 +11,8 @@ const {
 export default Route.extend({
   auth: service(),
   beforeModel() {
-    if (!get(this, 'auth.isAuthenticated')) {
-      return this.replaceWith('application');
+    if (get(this, 'auth.isAuthenticated')) {
+      this.transitionTo('protected');
     }
-  }
+  },
 });

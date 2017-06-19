@@ -14,5 +14,10 @@
     Log Out
 </a>
 <br/>
-<h2>You are logged in!</h2>
-<p>Check local storage to see your <code>access_token</code> and <code>id_token</code>.</p>
+<h2>This is a protected route. You can only reach it if you are authenticated.</h2>
+<br/>
+<h2>Message from a protected API endpoint:</h2>
+
+{{#each messages as |message|}}
+  {{message.body}}
+{{/each}}
