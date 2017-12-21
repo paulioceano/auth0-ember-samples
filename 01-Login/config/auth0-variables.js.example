@@ -1,5 +1,5 @@
 module.exports = {
   clientId: '{CLIENT_ID}',
   domain: '{DOMAIN}',
-  callbackUrl: 'http://localhost:4200'
+  callbackUrl: 'http://localhost:3000'
 }

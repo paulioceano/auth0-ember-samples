@@ -4,7 +4,7 @@ This sample demonstrates how to make secure calls to an API after authenticating
 
 ## Getting Started
 
-If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. Which will be `http://localhost:4200`.
+If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. Which will be `http://localhost:3000`.
 
 ## Set the Client ID and Domain in the `.env` file
 
@@ -23,7 +23,7 @@ npm install
 ember serve 
 ```
 
-The application will be served at `http://localhost:4200`.
+The application will be served at `http://localhost:3000`.
 
 ## Ember Adapter
 

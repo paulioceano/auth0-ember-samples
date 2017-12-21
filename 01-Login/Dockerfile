@@ -13,4 +13,4 @@ ADD . /home/app
 
 CMD ["npm", "start"]
 
-EXPOSE 8080
+EXPOSE 3000
