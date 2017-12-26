@@ -11,7 +11,7 @@
   "repository": "",
   "scripts": {
     "build": "ember build",
-    "start": "ember server",
+    "start": "ember server --port 3000",
     "test": "ember test"
   },
   "devDependencies": {

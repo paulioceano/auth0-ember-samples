@@ -4,7 +4,7 @@ This sample demonstrates how to make secure calls to an API after authenticating
 
 ## Getting Started
 
-If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. Which will be `http://localhost:4200`.
+If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. Which will be `http://localhost:3000`.
 
 ## Set the Client ID and Domain in the `.env` file
 
@@ -23,7 +23,7 @@ npm install
 ember serve 
 ```
 
-The application will be served at `http://localhost:4200`.
+The application will be served at `http://localhost:3000`.
 
 ## Ember Adapter
 
@@ -35,6 +35,14 @@ See [route](./app/routes/application.js) for an example
 
 ## Ember Data
 See [route](./app/routes/protected.js) for an example
+
+## Run the Application With Docker
+
+In order to run the example with docker you need to have `docker` installed.
+
+You also need to set the environment variables as explained [previously](#set-the-client-id-and-domain-in-the-env-file).
+
+Execute in command line `sh exec.sh` to run the Docker in Linux, or `.\exec.ps1` to run the Docker in Windows.
 
 ## What is Auth0?
 
@@ -58,7 +66,7 @@ If you have found a bug or if you have a feature request, please report them at 
 
 ## Author
 
-[Auth0](auth0.com)
+[Auth0](https://auth0.com)
 
 ## License
 
