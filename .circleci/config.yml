@@ -13,8 +13,9 @@ defaults: &defaults
           command: |
             echo "var AUTH0_CLIENT_ID='$AUTH0_TEST_CLIENT_ID';" >> $AUTH0_CFG
             echo "var AUTH0_DOMAIN='$AUTH0_TEST_DOMAIN';" >> $AUTH0_CFG
-            echo "var AUTH0_AUDIENCE='$AUTH0_TEST_AUDIENCE';" >> $AUTH0_CFG
-            echo "var AUTH0_CALLBACK_URL=location.href;" >> $AUTH0_CFG
+            echo "var AUTH0_AUDIENCE='$AUTH0_TEST_API_IDENTIFIER';" >> $AUTH0_CFG
+            echo "var AUTH0_CALLBACK_URL='http://localhost:3000/callback';" >> $AUTH0_CFG
+            echo "var REQUESTED_SCOPES='openid profile read:messages';" >> $AUTH0_CFG
           
       - run:
           name: Build pull request
@@ -51,7 +52,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: git clone https://github.com/rafanog/spa-script scripts
+      - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
       - persist_to_workspace:
           root: ~/ 
           paths:
@@ -66,7 +67,7 @@ jobs:
   03-calling-an-api:
     machine: true
     environment:
-      - AUTH0_CFG: 03-Calling-an-API/auth0-variables.js
+      - AUTH0_CFG: 03-Calling-an-API/config/auth0-variables.js
       - SAMPLE_PATH: 03-Calling-an-API
     <<: *defaults
   
@@ -80,19 +81,7 @@ workflows:
           context: Quickstart SPA Test
           requires:
             - checkout
-      #- 02-user-profile:
-      #    context: Quickstart SPA Test
-      #    requires:
-      #      - checkout
       - 03-calling-an-api:
           context: Quickstart SPA Test
           requires:
             - checkout
-      #- 04-authorization:
-      #    context: Quickstart SPA Test
-      #    requires:
-      #      - checkout
-      #- 05-token-renewal:
-      #    context: Quickstart SPA Test
-      #    requires:
-      #      - checkout
