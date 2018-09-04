@@ -60,14 +60,8 @@ jobs:
   01-login:
     machine: true
     environment:
-      - AUTH0_CFG: 01-Login/auth0-variables.js
+      - AUTH0_CFG: 01-Login/config/auth0-variables.js
       - SAMPLE_PATH: 01-Login
-    <<: *defaults
-  02-user-profile:
-    machine: true
-    environment:
-      - AUTH0_CFG: 02-User-Profile/auth0-variables.js
-      - SAMPLE_PATH: 02-User-Profile
     <<: *defaults
   03-calling-an-api:
     machine: true
@@ -75,19 +69,7 @@ jobs:
       - AUTH0_CFG: 03-Calling-an-API/auth0-variables.js
       - SAMPLE_PATH: 03-Calling-an-API
     <<: *defaults
-  04-authorization:
-    machine: true
-    environment:
-      - AUTH0_CFG: 04-Authorization/auth0-variables.js
-      - SAMPLE_PATH: 04-Authorization
-    <<: *defaults
-  05-token-renewal:
-    machine: true
-    environment:
-      - AUTH0_CFG: 05-Token-Renewal/auth0-variables.js
-      - SAMPLE_PATH: 05-Token-Renewal
-    <<: *defaults
-
+  
 workflows:
   version: 2
   quickstarts_login:
@@ -102,10 +84,10 @@ workflows:
       #    context: Quickstart SPA Test
       #    requires:
       #      - checkout
-      #- 03-calling-an-api:
-      #    context: Quickstart SPA Test
-      #    requires:
-      #      - checkout
+      - 03-calling-an-api:
+          context: Quickstart SPA Test
+          requires:
+            - checkout
       #- 04-authorization:
       #    context: Quickstart SPA Test
       #    requires:
