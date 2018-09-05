@@ -15,7 +15,7 @@ defaults: &defaults
             echo "var AUTH0_DOMAIN='$AUTH0_TEST_DOMAIN';" >> $AUTH0_CFG
             echo "var AUTH0_AUDIENCE='$AUTH0_TEST_API_IDENTIFIER';" >> $AUTH0_CFG
             echo "var AUTH0_CALLBACK_URL='http://localhost:3000/callback';" >> $AUTH0_CFG
-            echo "var REQUESTED_SCOPES='openid profile read:messages';" >> $AUTH0_CFG
+#            echo "var REQUESTED_SCOPES='openid profile read:messages';" >> $AUTH0_CFG
           
       - run:
           name: Build pull request
