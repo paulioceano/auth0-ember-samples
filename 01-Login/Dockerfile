@@ -5,8 +5,6 @@ RUN apk --update add \
 	git openssl \
 	&& rm /var/cache/apk/*
 
-RUN apk --no-cache add git
-
 WORKDIR /home/app
 
 ADD package.json /home/app
